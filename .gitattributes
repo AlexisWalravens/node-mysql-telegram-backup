@@ -1,0 +1,4 @@
+*.env text
+*.ts text
+*.js text
+*.cjs text
