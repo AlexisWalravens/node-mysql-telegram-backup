@@ -7,12 +7,12 @@ import { fileURLToPath } from 'url'
 
 const TOKEN = process.env.TELEGRAM_BOT_TOKEN as string
 const MAIN_CHAT_ID = process.env.TELEGRAM_BOT_MAIN_CHAT_ID as string
-const ALLOWED_CHAT_IDS = process.env.TELEGRAM_BOT_MANUAL_CHAT_IDS as string
+const ALLOWED_USER_IDS = process.env.TELEGRAM_BOT_MANUAL_USER_IDS as string
 const SCHEDULE = process.env.CRON as string
 const DB_USER = process.env.DB_USER as string
 const DB_PASSWORD = process.env.DB_PASSWORD as string
 
-const allowedChatIds = ALLOWED_CHAT_IDS.split(',')
+const allowedUserIds = ALLOWED_USER_IDS.split(',')
 
 const bot = new TelegramBot(TOKEN, { polling: true })
 
@@ -62,7 +62,7 @@ const runManualBackup = async (chatId: number): Promise<void> => {
 }
 
 bot.onText(/\/backup/, (msg) => {
-  if (!allowedChatIds.includes(String(msg.chat.id))) {
+  if (!allowedUserIds.includes(String(msg.from?.id))) {
     void bot.sendMessage(msg.chat.id, 'You are not allowed to do this.')
     return
   }
