@@ -33,6 +33,6 @@ ENV DATABASES=${DATABASES}
 
 WORKDIR /app
 COPY --from=builder /app/dist /app
-COPY --from=builder /app/backups /app/backups
+RUN mkdir /app/backups
 
 CMD ["bun", "run", "index.js"]
