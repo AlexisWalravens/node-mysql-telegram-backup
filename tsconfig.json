@@ -1,38 +1,24 @@
 {
   "compilerOptions": {
-    "target": "ESNext",
+    "moduleResolution": "Bundler",
     "module": "ESNext",
-    "moduleResolution": "Node",
-    "allowSyntheticDefaultImports": true,
+    "noEmit": true,
     "esModuleInterop": true,
-    "importHelpers": true,
-    "resolveJsonModule": true,
-    "sourceMap": true,
-    "declaration": true,
-
-    "alwaysStrict": true,
-    "forceConsistentCasingInFileNames": true,
-    "removeComments": true,
-    "noImplicitAny": true,
-    "strictNullChecks": true,
-    "strictFunctionTypes": true,
-    "noImplicitThis": true,
-    "noUnusedLocals": false,
-    "noUnusedParameters": false,
-    "noImplicitReturns": true,
-    "strict": true,
-    "noFallthroughCasesInSwitch": true,
-    "emitDecoratorMetadata": true,
-    "experimentalDecorators": true,
-    "composite": true,
     "skipLibCheck": true,
-    "noEmitHelpers": false,
-
-    "tsBuildInfoFile": "./dist/tsconfig.tsbuildinfo",
-    "outDir": "dist",
-    "rootDir": "src",
-    "baseUrl": "."
+    "target": "es2022",
+    "verbatimModuleSyntax": true,
+    "allowJs": true,
+    "resolveJsonModule": true,
+    "moduleDetection": "force",
+    "strict": true,
+    "noUncheckedIndexedAccess": true,
+    "types": ["bun-types"],
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["./src/*"]
+    }
   },
-  "exclude": ["dist", "node_modules"],
-  "include": ["src"]
+  "lib": ["es2022"],
+  "include": ["./**/*.ts", "src/env.mjs", ".eslint.cjs"],
+  "exclude": ["node_modules", "dist"]
 }
